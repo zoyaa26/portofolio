@@ -1,0 +1,94 @@
+<button
+  class="theme-toggle"
+  type="button"
+  aria-label="Change website theme"
+  title="Change theme"
+>
+  <span class="ghibli-icon">☘</span>
+  <span class="formal-icon">◐</span>
+</button>
+
+<script>
+  const button = document.querySelector(".theme-toggle");
+
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "formal") {
+    document.documentElement.dataset.theme = "formal";
+  }
+
+  button?.addEventListener("click", () => {
+    const html = document.documentElement;
+
+    const isFormal = html.dataset.theme === "formal";
+
+    if (isFormal) {
+      html.removeAttribute("data-theme");
+      localStorage.setItem("theme", "ghibli");
+    } else {
+      html.dataset.theme = "formal";
+      localStorage.setItem("theme", "formal");
+    }
+  });
+</script>
+
+<style>
+  .theme-toggle {
+    position: fixed;
+
+    right: 24px;
+    bottom: 24px;
+
+    z-index: 100;
+
+    width: 48px;
+    height: 48px;
+
+    border: 1px solid var(--border);
+
+    border-radius: 50%;
+
+    background: var(--surface);
+    color: var(--text);
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    box-shadow:
+      0 8px 25px rgba(0, 0, 0, 0.12);
+
+    transition:
+      transform 0.3s ease,
+      background 0.4s ease,
+      color 0.4s ease;
+  }
+
+  .theme-toggle:hover {
+    transform: translateY(-3px);
+  }
+
+  .formal-icon {
+    display: none;
+  }
+
+  html[data-theme="formal"] .ghibli-icon {
+    display: none;
+  }
+
+  html[data-theme="formal"] .formal-icon {
+    display: block;
+  }
+
+  @media (max-width: 600px) {
+    .theme-toggle {
+      right: 18px;
+      bottom: 18px;
+
+      width: 44px;
+      height: 44px;
+    }
+  }
+</style>

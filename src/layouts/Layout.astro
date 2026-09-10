@@ -1,23 +1,46 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Eka Herlambang Budiansyah | Software Developer",
+  description = "Portfolio of Eka Herlambang Budiansyah, a software developer building web, mobile, desktop, and IoT applications."
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+  <head>
+
+    <meta charset="UTF-8" />
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <meta
+      name="description"
+      content={description}
+    />
+
+    <title>{title}</title>
+
+  </head>
+
+  <body data-theme="ghibli">
+  <slot />
+
+  <script is:inline>
+    const savedTheme = localStorage.getItem("portfolio-theme");
+
+    if (savedTheme === "formal" || savedTheme === "ghibli") {
+      document.body.dataset.theme = savedTheme;
+    }
+  </script>
+</body></html>
