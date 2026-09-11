@@ -1,0 +1,363 @@
+<section id="services" class="services">
+  <div class="services-container">
+
+    <div class="services-header">
+      <p class="eyebrow">What I offer</p>
+      <h2>Services.</h2>
+      <p class="services-description">
+        Digital solutions designed to turn ideas into practical
+        and functional products.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <article class="service-card">
+        <div class="service-top">
+          <span class="service-number">01</span>
+          <span class="service-arrow"></span>
+        </div>
+
+        <h3>Web Development</h3>
+
+        <p>
+          Responsive websites and web applications built
+          for modern digital experiences.
+        </p>
+
+        <div class="service-tags">
+          <span>React</span>
+          <span>Next.js</span>
+          <span>PHP</span>
+        </div>
+      </article>
+
+
+      <article class="service-card">
+        <div class="service-top">
+          <span class="service-number">02</span>
+          <span class="service-arrow"></span>
+        </div>
+
+        <h3>Mobile Development</h3>
+
+        <p>
+          Mobile applications designed to be functional,
+          responsive, and easy to use.
+        </p>
+
+        <div class="service-tags">
+          <span>Flutter</span>
+          <span>Dart</span>
+          <span>Android</span>
+        </div>
+      </article>
+
+
+      <article class="service-card">
+        <div class="service-top">
+          <span class="service-number">03</span>
+          <span class="service-arrow"></span>
+        </div>
+
+        <h3>Desktop Application</h3>
+
+        <p>
+          Practical desktop applications created for
+          specific workflows and business needs.
+        </p>
+
+        <div class="service-tags">
+          <span>Java</span>
+          <span>C++</span>
+        </div>
+      </article>
+
+
+      <article class="service-card">
+        <div class="service-top">
+          <span class="service-number">04</span>
+          <span class="service-arrow"></span>
+        </div>
+
+        <h3>IoT Development</h3>
+
+        <p>
+          Connected systems combining sensors, hardware,
+          and software for real-world applications.
+        </p>
+
+        <div class="service-tags">
+          <span>C++</span>
+          <span>Python</span>
+          <span>IoT</span>
+        </div>
+      </article>
+
+
+      <article class="service-card">
+        <div class="service-top">
+          <span class="service-number">05</span>
+          <span class="service-arrow"></span>
+        </div>
+
+        <h3>API Integration</h3>
+
+        <p>
+          Connecting applications and external services
+          through reliable API integrations.
+        </p>
+
+        <div class="service-tags">
+          <span>REST API</span>
+          <span>JSON</span>
+          <span>Postman</span>
+        </div>
+      </article>
+
+    </div>
+
+  </div>
+</section>
+
+
+<style>
+  .services {
+    width: 100%;
+    padding: 120px 6vw;
+    background: var(--bg);
+    color: var(--text);
+    transition:
+      background-color 0.6s ease,
+      color 0.6s ease;
+  }
+
+  .services-container {
+    width: min(1180px, 100%);
+    margin: 0 auto;
+  }
+
+
+  /* HEADER */
+
+  .services-header {
+    max-width: 680px;
+    margin: 0 auto 60px;
+    text-align: center;
+  }
+
+  .eyebrow {
+    margin: 0 0 12px;
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .services-header h2 {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(48px, 6vw, 72px);
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.04em;
+  }
+
+  .services-description {
+    max-width: 540px;
+    margin: 22px auto 0;
+    color: var(--text-soft);
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+
+  /* GRID */
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+
+  /* CARD */
+
+  .service-card {
+    position: relative;
+    min-height: 300px;
+    padding: 26px;
+
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    background: var(--surface);
+
+    transition:
+      transform 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.5s ease,
+      border-color 0.4s ease,
+      background-color 0.5s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-7px);
+    border-color: var(--primary);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  }
+
+
+  /* TOP */
+
+  .service-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 48px;
+  }
+
+  .service-number {
+    color: var(--primary);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 14px;
+  }
+
+  .service-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    border: 1px solid var(--border);
+    border-radius: 50%;
+
+    font-size: 16px;
+
+    transition:
+      transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+      background-color 0.4s ease,
+      color 0.4s ease;
+  }
+
+  .service-card:hover .service-arrow {
+    transform: translate(3px, -3px);
+    background: var(--primary);
+    color: var(--cream);
+  }
+
+
+  /* CONTENT */
+
+  .service-card h3 {
+    margin: 0 0 14px;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.1;
+  }
+
+  .service-card p {
+    margin: 0;
+
+    color: var(--text-soft);
+    font-size: 14px;
+    line-height: 1.75;
+  }
+
+
+  /* TAGS */
+
+  .service-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: 25px;
+  }
+
+  .service-tags span {
+    padding: 6px 10px;
+
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    color: var(--text-soft);
+    font-size: 10px;
+    line-height: 1;
+
+    transition:
+      border-color 0.4s ease,
+      color 0.4s ease;
+  }
+
+  .service-card:hover .service-tags span {
+    border-color: var(--primary);
+  }
+
+
+  /* FORMAL */
+
+  html[data-theme="formal"] .service-card {
+    border-radius: 8px;
+  }
+
+  html[data-theme="formal"] .service-card:hover {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+  }
+
+
+  /* TABLET */
+
+  @media (max-width: 900px) {
+    .services {
+      padding: 100px 5vw;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+
+  /* MOBILE */
+
+  @media (max-width: 600px) {
+    .services {
+      padding: 90px 20px;
+    }
+
+    .services-header {
+      margin-bottom: 45px;
+    }
+
+    .services-header h2 {
+      font-size: 52px;
+    }
+
+    .services-description {
+      font-size: 14px;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .service-card {
+      min-height: 270px;
+      padding: 22px;
+      border-radius: 17px;
+    }
+
+    .service-top {
+      margin-bottom: 42px;
+    }
+
+    .service-card h3 {
+      font-size: 26px;
+    }
+  }
+</style>

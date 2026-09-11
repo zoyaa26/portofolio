@@ -1,631 +1,286 @@
 ---
 ---
 
-<nav class="navbar">
+<a href="#top" class="logo" aria-label="Back to top">Eka.</a>
 
-  <!-- LOGO -->
-  <a href="/" class="logo">
-    <span class="logo-ghibli">Eka.</span>
-    <span class="logo-formal">EH.</span>
-  </a>
+<nav class="side-nav" aria-label="Main navigation">
+  <div class="nav-pill">
 
-
-  <!-- DESKTOP NAVIGATION -->
-  <div class="nav-links">
-
-    <a href="#about">
-      About
+    <!-- Home -->
+    <a href="#top" class="nav-item active" aria-label="Home">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 10.5 12 3l9 7.5" />
+        <path d="M5.5 9.5V21h13V9.5" />
+        <path d="M9.5 21v-6h5v6" />
+      </svg>
     </a>
 
-    <a href="#skills">
-      Skills
+    <!-- About -->
+    <a href="#about" class="nav-item" aria-label="About">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="8" r="3.5" />
+        <path d="M5 21c.8-4 3.2-6 7-6s6.2 2 7 6" />
+      </svg>
     </a>
 
-    <a href="#projects">
-      Projects
+    <!-- Skills -->
+    <a href="#skills" class="nav-item" aria-label="Skills">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3 14.2 9.8 21 12l-6.8 2.2L12 21l-2.2-6.8L3 12l6.8-2.2L12 3Z" />
+      </svg>
     </a>
 
-    <a href="#contact">
-      Contact
+    <!-- Services -->
+    <a href="#services" class="nav-item" aria-label="Services">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="7" width="18" height="13" rx="2" />
+        <path d="M8 7V5.5A2.5 2.5 0 0 1 10.5 3h3A2.5 2.5 0 0 1 16 5.5V7" />
+        <path d="M3 12h18" />
+        <path d="M10 12v2h4v-2" />
+      </svg>
     </a>
 
-  </div>
+    <!-- Projects -->
+    <a href="#projects" class="nav-item" aria-label="Projects">
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="16" rx="2" />
+        <path d="M7 8h10" />
+        <path d="M7 12h6" />
+        <path d="M7 16h8" />
+      </svg>
+    </a>
 
+    <div class="nav-divider"></div>
 
-  <!-- RIGHT SIDE -->
-  <div class="nav-right">
-
-    <!-- THEME SWITCH -->
+    <!-- Theme -->
     <button
-      class="theme-switch"
       type="button"
-      aria-label="Change theme"
+      class="theme-toggle"
+      aria-label="Switch theme"
+      title="Switch theme"
     >
+      <svg class="theme-icon ghibli-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="4" />
+        <path d="M12 2v2" />
+        <path d="M12 20v2" />
+        <path d="m4.93 4.93 1.41 1.41" />
+        <path d="m17.66 17.66 1.41 1.41" />
+        <path d="M2 12h2" />
+        <path d="M20 12h2" />
+        <path d="m4.93 19.07 1.41-1.41" />
+        <path d="m17.66 6.34 1.41-1.41" />
+      </svg>
 
-      <span class="switch-ghibli">
-        Ghibli
-      </span>
-
-      <span class="switch-formal">
-        Formal
-      </span>
-
+      <svg class="theme-icon formal-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 3v18" />
+        <path d="M5 7h14" />
+        <path d="M7 7 4 14h6L7 7Z" />
+        <path d="M17 7 14 14h6l-3-7Z" />
+        <path d="M8 21h8" />
+      </svg>
     </button>
 
-
-    <!-- MOBILE MENU -->
-    <button
-      class="menu-button"
-      type="button"
-      aria-label="Open menu"
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-    </button>
-
   </div>
-
 </nav>
 
+<script>
+  const themeButton = document.querySelector(".theme-toggle");
+
+  const savedTheme = localStorage.getItem("portfolio-theme");
+
+  if (savedTheme === "formal" || savedTheme === "ghibli") {
+    document.documentElement.dataset.theme = savedTheme;
+  } else {
+    document.documentElement.dataset.theme = "ghibli";
+  }
+
+  themeButton?.addEventListener("click", () => {
+    const currentTheme =
+      document.documentElement.dataset.theme || "ghibli";
+
+    const nextTheme =
+      currentTheme === "ghibli" ? "formal" : "ghibli";
+
+    document.documentElement.dataset.theme = nextTheme;
+    localStorage.setItem("portfolio-theme", nextTheme);
+  });
+</script>
 
 <style>
-
-/* ================================================= */
-/* NAVBAR */
-/* ================================================= */
-
-.navbar {
-  position: fixed;
-
-  top: 0;
-  left: 0;
-  right: 0;
-
-  z-index: 100;
-
-  height: 82px;
-
-  padding: 0 5vw;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  background: transparent;
-
-  transition:
-    background 0.4s ease,
-    color 0.4s ease,
-    border 0.4s ease,
-    backdrop-filter 0.4s ease;
-}
-
-
-/* ================================================= */
-/* LOGO */
-/* ================================================= */
-
-.logo {
-  position: relative;
-
-  display: inline-flex;
-  align-items: center;
-
-  text-decoration: none;
-
-  font-family: Georgia, serif;
-  font-size: 27px;
-  font-weight: 600;
-
-  letter-spacing: -1px;
-
-  color: var(--text);
-
-  transition:
-    color 0.4s ease,
-    transform 0.3s ease;
-}
-
-.logo:hover {
-  transform: translateY(-1px);
-}
-
-
-.logo-ghibli {
-  display: block;
-}
-
-
-.logo-formal {
-  display: none;
-
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 21px;
-  font-weight: 700;
-
-  letter-spacing: -1px;
-}
-
-
-/* ================================================= */
-/* NAV LINKS */
-/* ================================================= */
-
-.nav-links {
-  display: flex;
-  align-items: center;
-
-  gap: 34px;
-
-  margin-left: auto;
-  margin-right: 28px;
-}
-
-
-.nav-links a {
-  position: relative;
-
-  text-decoration: none;
-
-  font-family: Georgia, serif;
-  font-size: 14px;
-
-  color: var(--text);
-
-  transition:
-    color 0.3s ease;
-}
-
-
-.nav-links a::after {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  bottom: -6px;
-
-  width: 0;
-  height: 1px;
-
-  background: var(--primary);
-
-  transition:
-    width 0.3s ease;
-}
-
-
-.nav-links a:hover {
-  color: var(--primary);
-}
-
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-
-/* ================================================= */
-/* RIGHT SIDE */
-/* ================================================= */
-
-.nav-right {
-  display: flex;
-  align-items: center;
-
-  gap: 14px;
-}
-
-
-/* ================================================= */
-/* THEME SWITCH */
-/* ================================================= */
-
-.theme-switch {
-  min-width: 74px;
-  height: 34px;
-
-  padding: 0 13px;
-
-  border:
-    1px solid
-    rgba(91, 70, 56, 0.22);
-
-  border-radius: 999px;
-
-  background:
-    rgba(250, 243, 220, 0.88);
-
-  color: #5b4638;
-
-  cursor: pointer;
-
-  font-family: Georgia, serif;
-  font-size: 11px;
-
-  box-shadow:
-    0 4px 12px rgba(50, 40, 30, 0.08);
-
-  transition:
-    background 0.3s ease,
-    color 0.3s ease,
-    border 0.3s ease,
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-}
-
-
-.theme-switch:hover {
-  transform: translateY(-2px);
-
-  background:
-    #fff8e8;
-
-  box-shadow:
-    0 7px 16px rgba(50, 40, 30, 0.13);
-}
-
-
-.switch-ghibli {
-  display: inline;
-}
-
-
-.switch-formal {
-  display: none;
-}
-
-
-/* ================================================= */
-/* MOBILE MENU BUTTON */
-/* ================================================= */
-
-.menu-button {
-  display: none;
-
-  width: 38px;
-  height: 38px;
-
-  padding: 0;
-
-  border: 0;
-
-  background: transparent;
-
-  cursor: pointer;
-
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  gap: 6px;
-}
-
-
-.menu-button span {
-  display: block;
-
-  width: 20px;
-  height: 1.5px;
-
-  background:
-    var(--text);
-
-  transition:
-    transform 0.3s ease,
-    opacity 0.3s ease,
-    background 0.3s ease;
-}
-
-
-/* ================================================= */
-/* FORMAL MODE */
-/* ================================================= */
-
-html[data-theme="formal"] .navbar {
-  background:
-    rgba(247, 247, 245, 0.88);
-
-  border-bottom:
-    1px solid
-    rgba(0, 0, 0, 0.07);
-
-  backdrop-filter:
-    blur(12px);
-}
-
-
-/* Logo */
-
-html[data-theme="formal"] .logo-ghibli {
-  display: none;
-}
-
-
-html[data-theme="formal"] .logo-formal {
-  display: block;
-}
-
-
-/* Navigation */
-
-html[data-theme="formal"] .nav-links a {
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 12px;
-
-  letter-spacing: 0.3px;
-
-  text-transform: uppercase;
-}
-
-
-/* Theme button */
-
-html[data-theme="formal"] .theme-switch {
-  font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
-
-  font-size: 10px;
-
-  text-transform: uppercase;
-
-  letter-spacing: 1px;
-
-  background:
-    #171717;
-
-  color:
-    #ffffff;
-
-  border-color:
-    #171717;
-
-  box-shadow:
-    0 4px 12px rgba(0, 0, 0, 0.12);
-}
-
-
-html[data-theme="formal"] .theme-switch:hover {
-  background:
-    #333333;
-
-  border-color:
-    #333333;
-}
-
-
-html[data-theme="formal"] .switch-ghibli {
-  display: none;
-}
-
-
-html[data-theme="formal"] .switch-formal {
-  display: inline;
-}
-
-
-/* Menu icon */
-
-html[data-theme="formal"] .menu-button span {
-  background:
-    #171717;
-}
-
-
-/* ================================================= */
-/* TABLET */
-/* ================================================= */
-
-@media (max-width: 900px) {
-
-  .navbar {
-    height: 72px;
-
-    padding: 0 24px;
-  }
-
-
-  .nav-links {
-    gap: 22px;
-
-    margin-right: 18px;
-  }
-
-}
-
-
-/* ================================================= */
-/* MOBILE */
-/* ================================================= */
-
-@media (max-width: 600px) {
-
-  .navbar {
-    height: 68px;
-
-    padding: 0 18px;
-  }
-
-
   .logo {
-    font-size: 24px;
+    position: fixed;
+    top: 28px;
+    left: 5vw;
+    z-index: 1100;
+
+    color: var(--text);
+    font-family: Georgia, serif;
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+
+    transition: color 0.45s ease;
   }
 
+  .side-nav {
+    position: fixed;
+    left: 28px;
+    top: 50%;
+    z-index: 1000;
 
-  .nav-links {
+    transform: translateY(-50%);
+  }
+
+  .nav-pill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+
+    width: 62px;
+    padding: 10px 7px;
+
+    background: rgba(255, 255, 255, 0.72);
+    border: 1px solid var(--border);
+    border-radius: 32px;
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.08);
+
+    transition:
+      background 0.45s ease,
+      border-color 0.45s ease,
+      box-shadow 0.45s ease;
+  }
+
+  .nav-item,
+  .theme-toggle {
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 50%;
+
+    color: var(--text-soft);
+    background: transparent;
+
+    text-decoration: none;
+    cursor: pointer;
+
+    transition:
+      background 0.3s ease,
+      color 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .nav-item:hover,
+  .theme-toggle:hover {
+    color: var(--text);
+    background: rgba(127, 127, 127, 0.1);
+    transform: scale(1.05);
+  }
+
+  .nav-item.active {
+    color: var(--text);
+    background: rgba(127, 127, 127, 0.12);
+  }
+
+  .nav-item svg,
+  .theme-toggle svg {
+    width: 19px;
+    height: 19px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .nav-divider {
+    width: 26px;
+    height: 1px;
+    margin: 5px 0;
+
+    background: var(--border);
+  }
+
+  .formal-icon {
     display: none;
   }
 
-
-  .nav-right {
-    gap: 7px;
+  html[data-theme="formal"] .ghibli-icon {
+    display: none;
   }
 
-
-  .theme-switch {
-    min-width: 65px;
-
-    height: 32px;
-
-    padding: 0 10px;
-
-    font-size: 10px;
+  html[data-theme="formal"] .formal-icon {
+    display: block;
   }
 
-
-  .menu-button {
-    display: flex;
+  html[data-theme="formal"] .nav-pill {
+    background: rgba(255, 255, 255, 0.82);
   }
 
-}
-
-
-/* ================================================= */
-/* VERY SMALL PHONE */
-/* ================================================= */
-
-@media (max-width: 380px) {
-
-  .navbar {
-    padding: 0 14px;
-  }
-
-
-  .logo {
-    font-size: 22px;
-  }
-
-
-  .theme-switch {
-    min-width: 60px;
-
-    height: 30px;
-
-    font-size: 9px;
-  }
-
-
-  .menu-button {
-    width: 34px;
-    height: 34px;
-  }
-
-}
-
-
-/* ================================================= */
-/* REDUCED MOTION */
-/* ================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .navbar,
-  .logo,
-  .theme-switch,
-  .nav-links a,
-  .nav-links a::after,
-  .menu-button span {
-    transition: none;
-  }
-
-}
-
-</style>
-
-
-<script>
-
-const themeButton =
-  document.querySelector<HTMLButtonElement>(
-    ".theme-switch"
-  );
-
-const menuButton =
-  document.querySelector<HTMLButtonElement>(
-    ".menu-button"
-  );
-
-
-/* ================================================= */
-/* THEME */
-/* ================================================= */
-
-const savedTheme =
-  localStorage.getItem("theme");
-
-if (savedTheme === "formal") {
-  document.documentElement.dataset.theme =
-    "formal";
-}
-
-
-themeButton?.addEventListener(
-  "click",
-  () => {
-
-    const html =
-      document.documentElement;
-
-    const currentTheme =
-      html.dataset.theme;
-
-    if (currentTheme === "formal") {
-
-      html.removeAttribute(
-        "data-theme"
-      );
-
-      localStorage.setItem(
-        "theme",
-        "ghibli"
-      );
-
-    } else {
-
-      html.dataset.theme =
-        "formal";
-
-      localStorage.setItem(
-        "theme",
-        "formal"
-      );
-
+  @media (max-width: 900px) {
+    .logo {
+      top: 22px;
+      left: 4vw;
+      font-size: 24px;
     }
 
+    .side-nav {
+      left: 18px;
+    }
+
+    .nav-pill {
+      width: 58px;
+    }
+
+    .nav-item,
+    .theme-toggle {
+      width: 44px;
+      height: 44px;
+    }
   }
-);
 
+  @media (max-width: 600px) {
+    .logo {
+      top: 18px;
+      left: 20px;
+      font-size: 23px;
+    }
 
-/* ================================================= */
-/* MOBILE MENU */
-/* ================================================= */
+    .side-nav {
+      left: 50%;
+      top: auto;
+      bottom: 15px;
+      transform: translateX(-50%);
+    }
 
-menuButton?.addEventListener(
-  "click",
-  () => {
+    .nav-pill {
+      flex-direction: row;
+      width: auto;
+      padding: 7px 9px;
+      gap: 3px;
+    }
 
-    const expanded =
-      menuButton.getAttribute(
-        "aria-expanded"
-      ) === "true";
+    .nav-divider {
+      width: 1px;
+      height: 26px;
+      margin: 0 4px;
+    }
 
-    menuButton.setAttribute(
-      "aria-expanded",
-      String(!expanded)
-    );
-
+    .nav-item,
+    .theme-toggle {
+      width: 42px;
+      height: 42px;
+    }
   }
-);
-
-</script>
+</style>

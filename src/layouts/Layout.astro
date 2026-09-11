@@ -14,9 +14,7 @@ const {
 
 <!doctype html>
 <html lang="en">
-
   <head>
-
     <meta charset="UTF-8" />
 
     <meta
@@ -31,16 +29,17 @@ const {
 
     <title>{title}</title>
 
+    <!-- Apply saved theme before page renders -->
+    <script is:inline>
+      const savedTheme = localStorage.getItem("portfolio-theme");
+
+      if (savedTheme === "formal") {
+        document.documentElement.dataset.theme = "formal";
+      }
+    </script>
   </head>
 
-  <body data-theme="ghibli">
-  <slot />
-
-  <script is:inline>
-    const savedTheme = localStorage.getItem("portfolio-theme");
-
-    if (savedTheme === "formal" || savedTheme === "ghibli") {
-      document.body.dataset.theme = savedTheme;
-    }
-  </script>
-</body></html>
+  <body>
+    <slot />
+  </body>
+</html>
