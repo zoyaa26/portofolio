@@ -1,6 +1,3 @@
----
----
-
 <a href="#top" class="logo" aria-label="Back to top">Eka.</a>
 
 <nav class="side-nav" aria-label="Main navigation">
@@ -204,12 +201,13 @@
     stroke-linejoin: round;
   }
 
+  /* Bagian Divider diubah menjadi tanpa garis (hanya memberi jarak spasi) */
   .nav-divider {
-    width: 26px;
-    height: 1px;
-    margin: 5px 0;
-
-    background: var(--border);
+    width: 100%;
+    height: 12px;
+    margin: 4px 0;
+    background: transparent;
+    border: none;
   }
 
   .formal-icon {
@@ -271,9 +269,10 @@
       gap: 3px;
     }
 
+    /* Penyesuaian jarak kosong untuk mode mobile (horizontal) */
     .nav-divider {
-      width: 1px;
-      height: 26px;
+      width: 12px;
+      height: 100%;
       margin: 0 4px;
     }
 
